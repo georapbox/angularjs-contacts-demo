@@ -1,0 +1,104 @@
+<div class="container" hide-contact-options>	
+	<div class="row" id="search">
+		<!-- search input -->
+		<div class="twocol">
+			<input type="text" placeholder="Search" data-ng-model="query">
+		</div>
+
+		<!-- sorting options -->
+		<div class="tencol last">
+			<section id="filters">
+				<dt><label>Sort by:</label></dt> 
+				<dd>
+					<a href="javascript:void(0);" ng-click="sortBy('name'); sortByName = !sortByName" ng-show="sortByName">Name <span>&#xf0d8;</span></a> <!-- down arrow -->
+					<a href="javascript:void(0);" ng-click="sortBy('-name'); sortByName = !sortByName" ng-show="!sortByName">Name <span>&#xf0d7;</span></a> <!-- up arrow -->
+				</dd>
+				<dd>
+					<a href="javascript:void(0);" ng-click="sortBy('phoneNo'); sortByPhoneNo = !sortByPhoneNo" ng-show="sortByPhoneNo">Phone No <span>&#xf0d8;</span></a>
+					<a href="javascript:void(0);" ng-click="sortBy('-phoneNo'); sortByPhoneNo = !sortByPhoneNo" ng-show="!sortByPhoneNo">Phone No <span>&#xf0d7;</span></a>
+				</dd>
+				<dd>
+					<a href="javascript:void(0);" ng-click="sortBy('mobileNo'); sortByMobileNo = !sortByMobileNo" ng-show="sortByMobileNo">Mobile No <span>&#xf0d8;</span></a>
+					<a href="javascript:void(0);" ng-click="sortBy('-mobileNo'); sortByMobileNo = !sortByMobileNo" ng-show="!sortByMobileNo">Mobile No <span>&#xf0d7;</span></a>
+				</dd>
+				<dd>
+					<a href="javascript:void(0);" ng-click="sortBy('email'); sortByEmail = !sortByEmail" ng-show="sortByEmail">E-mail <span>&#xf0d8;</span></a>
+					<a href="javascript:void(0);" ng-click="sortBy('-email'); sortByEmail = !sortByEmail" ng-show="!sortByEmail">E-mail <span>&#xf0d7;</span></a>
+				</dd>
+
+				<a id="addContactBtn" ui-sref="catalogue.add"><span>&#xf055;</span>Add Contact</a>
+			</section>
+		</div>
+	</div>
+</div>
+
+<div ui-view="addView"></div> <!-- add new contact view -->
+
+<div class="container" hide-contact-options>
+	<div class="row" id="catalogue">
+		<!-- empty searh query message -->
+		<div class="threecol last">
+			<p id="emptyQuery_msg" ng-show="(data.contacts | filter:query).length == 0">
+				<span>&#xf06a;</span> There are no entries for given query.
+			</p>
+		</div>
+		
+		<!-- contact items -->	
+		<div class="twelvecol last">
+			<ul class="row">
+				<li class="threecol dn-flip-y" id="contact_{{contact.id}}" ng-repeat="contact in data.contacts | filter:query | orderBy:orderProp">
+					<!-- toggle contact options handler -->
+					<div class="optionsHandler unselectable" toggle-contact-options>&#xf078;</div>
+					
+					<!-- contact options (edit, delete) -->
+					<div class="contactOptions">
+						<p><a href="javascript:void(0);" ng-click="edit = !edit">Edit Contact</a></p>
+						<p><a ui-sref="catalogue.delete({contactID: contact.id})" ng-click="saveContactItem(contact)">Delete Contact</a></p>
+					</div>
+					
+					<!-- contact avatar image -->
+					<div class="photo" rollover-effect effect="animated wiggle" ng-switch="contact.photo">
+						<img ng-switch-default ng-src="img/avatars/{{contact.photo}}" width="100%" height="100%" alt="{{contact.name}}">
+						<img ng-switch-when="null" ng-src="img/avatars/noImage.jpg" width="100%" height="100%" alt="{{contact.name}}">
+					</div>
+
+					<!-- contact details -->
+					<div class="details">
+						<form ng-submit="updateContact(contact)" ng-switch="edit">
+							<h2>
+								<span ng-bind="contact.name" ng-switch-default></span> <!-- contact name --> 
+								<input type="text" ng-model="contact.name" ng-switch-when="true">
+							</h2>
+							<p>
+								<span ng-show="contact.phoneNo">
+									<span class="awesome">&#xf095;</span> <span ng-bind="contact.phoneNo" ng-switch-default></span> <!-- contact phone number -->
+								</span>
+								<input type="text" ng-model="contact.phoneNo" ng-switch-when="true" placeholder="Phone Number">
+							</p>
+							<p>
+								<span ng-show="contact.mobileNo">
+									<span class="awesome">&#xf10b;</span> <span ng-bind="contact.mobileNo" ng-switch-default></span> <!-- contact mobile number -->
+								</span>
+								<input type="text" ng-model="contact.mobileNo" ng-switch-when="true" placeholder="Mobile Number">
+							</p>
+							<p>
+								<span ng-show="contact.email">
+									<span class="awesome">&#xf0e0;</span> <a href="mailto:{{contact.email}}" ng-bind="contact.email" ng-switch-default></a> <!-- contact e-mail -->
+								</span>
+								<input type="email" ng-model="contact.email" ng-switch-when="true" placeholder="E-mail Address">
+							</p>
+							<p ng-show="edit">
+								<input type="submit" value="Save" ng-click="edit = !edit"> &nbsp;or&nbsp; 
+								<a class="cancel" ui-sref="catalogue" ng-click="edit = !edit">cancel</a>
+							</p>
+							<!-- message after successfull or unsuccessfull save -->
+							<p class="inlineMessage" id="inlineMessage_{{contact.id}}">{{message}}</p>
+						</form>	
+					</div>
+				</li>
+			</ul>		
+		</div>
+	</div>
+</div>
+
+<div ui-view="deleteView"></div> <!-- delete contact view -->

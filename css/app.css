@@ -1,0 +1,512 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontAwesome/fontawesome-webfont.eot?v=3.0.1');
+  src: url('../fonts/fontAwesome/fontawesome-webfont.eot?#iefix&v=3.0.1') format('embedded-opentype'),
+    url('../fonts/fontAwesome/fontawesome-webfont.woff?v=3.0.1') format('woff'),
+    url('../fonts/fontAwesome/fontawesome-webfont.ttf?v=3.0.1') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{ 
+    margin: 0;
+    padding: 0;  
+    outline: none; 
+}
+[ng-cloak]{
+	display: none;
+}
+.clear { clear:both; }
+.left { float:left; }
+.right { float:right; }
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 76%;
+	background: #f5f5f5;
+}
+
+a:link { color:#427fed; text-decoration:none; }
+a:visited { color:#427fed; text-decoration:none; }
+a:hover { color:#427fed; text-decoration:underline; }
+
+.overlay{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.7);
+}
+
+/*
+ * =======================================
+ * 		      	   HEADER
+ * =======================================
+*/
+#mainHeader{
+	margin-bottom: 20px;
+	background: #222222; /* Old browsers */
+    background: -moz-linear-gradient(top,  #333333 0%, #222222 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333333), color-stop(100%,#222222)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #333333 0%,#222222 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #333333 0%,#222222 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #333333 0%,#222222 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #333333 0%,#222222 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333333', endColorstr='#222222',GradientType=0 ); /* IE6-9 */
+}
+#mainHeader h1{
+	font-size: 1.50em;
+	color: #ffffff;
+	text-align: center;
+	padding: 12px 0;
+}
+
+/*
+ * =======================================
+ *   	SEARCH AND SORTING FILTERS
+ * =======================================
+*/
+#emptyQuery_msg{
+	font-size: 1.33em;
+	padding: 25px 20px;
+	color: #999999;
+	background: #fff;
+	box-shadow: 1px 1px 5px 0px #E8E8E8;
+	-moz-box-shadow: 1px 1px 5px 0px #E8E8E8;
+	-webkit-box-shadow: 1px 1px 5px 0px #E8E8E8;
+}
+#emptyQuery_msg span{
+	font-family: 'FontAwesome';
+	font-size: 1.08em;
+	color: #D8322A;
+}
+#search{
+	margin-bottom: 20px;
+}
+#search input{
+	width: 100%;
+	min-width: 200px;
+	color: #333333;
+	border: none;
+	padding: 7px 10px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	background: #fff;
+	border: 1px solid #d8d8d8;
+	border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+}
+#filters{
+	float: right;
+	margin-right: 105px;
+	padding: 10px 0 0 0;
+}
+#filters dt,
+#filters dd{
+	font-size: 1.08em;
+	float: left;
+}
+#filters dt{
+	margin-right: 5px;
+}
+#filters dd span{
+	font-family: 'FontAwesome';
+	color: #333;
+	font-size: 12px;
+}
+#filters dd:after{
+	padding: 0 7px 0 3px;
+	content: "|";
+	color: #ccc;
+}
+#filters dd:last-of-type:after{
+	content: "";
+}
+#filters dd a:hover{
+	text-decoration: none;
+}
+#filters dd a.active{
+	color: #333333;
+	text-decoration: underline;
+}
+
+#addContactBtn{
+	float: right;
+	display: block;
+	color: #ffffff;
+	text-decoration: none;
+	padding: 9px 15px 0 15px;
+	height: 35px;
+	margin-left: 25px;
+	background: #427fed;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	font-size: 1.08em;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+#addContactBtn span{
+	padding-right: 8px;
+	font-family: 'FontAwesome';
+	font-weight: normal;
+}
+#addContactBtn:hover{
+	opacity: 0.9;
+}
+
+/*
+ * =======================================
+ * 		    	CATALOGUE
+ * =======================================
+*/
+#catalogue ul li{
+	min-width: 200px;
+	position: relative;
+	list-style: none;
+	background: #eee;
+	margin-bottom: 1%;
+	padding: 10px;
+	height: 350px;
+	overflow: hidden;
+	border: 1px solid #d8d8d8;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-shadow: 1px 1px 1px #d8d8d8;
+	-moz-box-shadow: 1px 1px 1px #d8d8d8;
+	-webkit-box-shadow: 1px 1px 1px #d8d8d8;
+	background: #ffffff;
+}
+#catalogue ul li:nth-child(6n){
+	/*margin-right: 0px;*/
+}
+#catalogue ul li div.photo{
+	width: 100px;
+	height: 100px;
+	margin: 15px auto 25px auto;
+	overflow: hidden;
+	border-radius: 100px;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+}
+#catalogue ul li div.details{
+	height: 187px;
+	background: #f5f5f5;
+}
+#catalogue ul li div.details h2{
+	text-align: center;
+	font-size: 1.33em;
+	color: #333333;
+	padding: 15px 0;
+}
+#catalogue ul li div.details p{
+	font-size: 1.00em;
+	color: #666666;
+	text-align: center;
+	padding: 0 0 10px 0;
+}
+#catalogue ul li div.details p span.awesome{
+	font-family: 'FontAwesome';
+	font-size: 1.17em;
+	color: #333333; 
+}
+#catalogue ul li .optionsHandler{
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	font-family: 'FontAwesome';
+	font-size: 1.08em;
+	opacity: 0;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-ms-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+	cursor: pointer;
+}
+#catalogue ul li:hover .optionsHandler,
+#catalogue ul li .optionsHandler.active{
+	opacity: 1;
+}
+#catalogue ul li div.contactOptions{
+	position: absolute;
+	top: 30px;
+	right: 15px;
+	width: 85%;
+	padding: 10px 0;
+	border: 1px solid #d8d8d8;
+	box-shadow: 0px 0px 20px #ccc;
+	-moz-box-shadow: 0px 0px 20px #ccc;
+	-webkit-box-shadow: 0px 0px 20px #ccc;
+	background: #ffffff;
+	display: none;
+	z-index: 1;
+}
+#catalogue ul li div.contactOptions.visible{
+	display: block;
+}
+#catalogue ul li div.contactOptions p{
+	padding: 5px 5px 5px 20px;
+}
+#catalogue ul li div.contactOptions p:hover{
+	background: #f5f5f5;
+}
+#catalogue ul li div.contactOptions p a{
+	display: block;
+	color: #333333;
+	text-decoration: none;
+}
+#catalogue ul li .editIcon{
+	font-family: 'FontAwesome';
+}
+
+/*
+ * =======================================
+ * 		    	EDIT MODE
+ * =======================================
+*/
+input[type="text"],
+input[type="email"]{
+	border: 1px solid #d8d8d8;
+	background: #fff;
+	padding: 3px;
+}
+input[type="submit"]{
+	padding: 5px 12px;
+	color: #ffffff;
+	border: none;
+	background: #427fed;
+	cursor: pointer;
+}
+input[type="submit"]:hover{
+	opacity: 0.9;
+}
+a.cancel{
+	color: #ff0000;
+}
+p.inlineMessage{
+	position: absolute;
+	bottom: 12px;
+	width: calc(100% - 30px);
+	margin: 0 auto;
+	padding: 5px !important;
+	color: #ffffff !important;
+	display: none;
+}
+p.inlineMessage.success{
+	background: #427fed;
+}
+p.inlineMessage.error{
+	background: #D8322A;
+}
+
+/*
+ * =======================================
+ * 	      ADD NEW CONTACT
+ * =======================================
+*/
+#addContact{
+	max-width: 1760px;
+	position: relative;
+	margin: 10px 0 25px 0;
+	background: #fff;
+	border: 1px solid #d8d8d8;
+	box-shadow: 1px 1px 1px #d8d8d8;
+	-moz-box-shadow: 1px 1px 1px #d8d8d8;
+	-webkit-box-shadow: 1px 1px 1px #d8d8d8;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+#addContact .twlvecol{
+	padding: 30px 0 30px 30px;
+}
+#addContact h2{
+	color: #333333;
+	padding: 0 0 10px 0;
+	text-transform: uppercase;
+}
+#addContact dl{
+	float: left;
+	margin-right: 20px;
+}
+#addContact input[type="text"],
+#addContact input[type="email"]{
+	width: 200px;
+	height: 30px;
+	margin-bottom: 5px;
+}
+#addContact input[type="submit"]{
+	width: 100px;
+	height: 38px;
+}
+#closeAddContact{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	display: block;
+	font-family: 'FontAwesome';
+	font-size: 1.33em;
+	font-weight: normal;
+	padding: 8px 10px;
+	color: #ffffff;
+	text-decoration: none;
+	background: #D8322A;
+	cursor: pointer;
+}
+#closeAddContact:hover{
+	opacity: 0.9;
+}
+#addContactMsg{
+	position: fixed;
+	top: 47%;
+	left: 50%;
+	width: 230px;
+	margin-left: -115px;
+	padding: 10px;
+	z-index: 1;
+	display: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#addContactMsg.success{
+	background: #427fed;
+}
+#addContactMsg.error{
+	background: #D8322A;
+}
+#addContactMsg p{
+	font-size: 1.08em;
+	color: #ffffff;
+}
+
+/*
+ * =======================================
+ * 		   MESSAGE MODALS
+ * =======================================
+*/
+.msgModal{
+	position: fixed;
+	top: 40%;
+	left: 50%;
+	width: 250px;
+	padding: 30px 20px;
+	margin-left: -125px;
+	background: #ffffff;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+.msgModal p{
+	font-size: 1.08em;
+	padding: 0 0 20px 0;
+}
+
+/*
+ * =======================================
+ * 		     BUTTONS
+ * =======================================
+*/
+.button{
+	padding: 5px 10px;
+	border: none;
+	background: none;
+	color: #fff;
+	cursor: pointer;
+}
+.button:hover{
+	opacity: 0.9;
+}
+.button.yesBtn{
+	background: #427fed;
+}
+.button.cancelBtn{
+	background: #D8322A;
+}
+
+/*
+ * =======================================
+ * 		  MEDIA QUERIES 
+ * =======================================
+*/
+@media handheld, only screen and (max-width: 960px) {
+    .row .threecol{
+        width: 32.20% !important;
+    }
+}
+
+@media handheld, only screen and (max-width:767px){
+    #filters{
+        float: none;
+        margin-right: 0;
+    }
+    .row .threecol{
+        width: 100% !important;
+    }
+}
+
+/*
+ * =======================================
+ * 		    ANIMATIONS 
+ * =======================================
+*/
+/* Slide In Left */
+.slideInLeft.ng-enter,
+.slideInLeft.ng-leave {
+	-webkit-transition:0.5s linear all;
+  	-moz-transition:0.5s linear all;
+  	-o-transition:0.5s linear all;
+  	transition:0.5s linear all;
+}
+.slideInLeft.ng-enter,
+.slideInLeft.ng-leave.ng-leave-active {
+	margin-left: -100%;
+}
+.slideInLeft.ng-leave,
+.slideInLeft.ng-enter.ng-enter-active {
+	margin-left: 0%;
+}
+
+/* Fade */
+.fadeIn.ng-enter,
+.fadeIn.ng-leave {
+	-webkit-transition:0.2s linear all;
+  	-moz-transition:0.2s linear all;
+  	-o-transition:0.2s linear all;
+  	transition:0.2s linear all;
+}
+.fadeIn.ng-enter,
+.fadeIn.ng-leave.ng-leave-active {
+	opacity: 0;
+}
+.fadeIn.ng-leave,
+.fadeIn.ng-enter.ng-enter-active {
+	opacity: 1;
+}
+
+/* Scale */
+.scale-add, .scale-remove {
+	-webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+	-moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+	-o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+.scale,
+.scale-add.scale-add-active {
+	opacity: 1;
+} 
+.scale-remove.scale-remove-active {
+	opacity: 0;
+}

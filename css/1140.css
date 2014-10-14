@@ -1,0 +1,27 @@
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,address,cite,code,del,dfn,em,img,ins,q,small,strong,sub,sup,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;margin:0;padding:0}article,aside,figure,figure img,figcaption,hgroup,footer,header,nav,section,video,object{display:block}a img{border:0}figure{position:relative}figure img{width:100%}
+.container{padding-left:20px;padding-right:20px;}
+.row{width:100%;max-width:100%;min-width:755px;margin:0 auto;overflow:hidden;}
+.onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol{margin-right:1%;float:left;min-height:1px;}
+.row .onecol{width:6.25%;}
+.row .twocol{width:14.90%;}
+.row .threecol{width:23.50%;}
+.row .fourcol{width:32.20%;}
+.row .fivecol{width:40.85%;}
+.row .sixcol{width:49.50%;}
+.row .sevencol{width:58.15%;}
+.row .eightcol{width:66.8%;}
+.row .ninecol{width:75.50%;}
+.row .tencol{width:84.10%;}
+.row .elevencol{width:92.75%;}
+.row .twelvecol{width:100%;float:left;}
+.last{margin-right:0px;}
+img, object, embed{max-width:100%;}
+img{height:auto;}
+@media only screen and (max-width:1023px){
+	/*body{font-size:1em;}*/
+}
+@media handheld, only screen and (max-width:767px){
+body{/* font-size:16px;-webkit-text-size-adjust:none; */}
+.row, body, .container{width:100%;min-width:0;margin-left:0px;margin-right:0px;padding-left:0px;padding-right:0px;}
+.row .onecol, .row .twocol, .row .threecol, .row .fourcol, .row .fivecol, .row .sixcol, .row .sevencol, .row .eightcol, .row .ninecol, .row .tencol, .row .elevencol, .row .twelvecol{width:auto;float:none;margin-left:0px;margin-right:0px;padding-left:20px;padding-right:20px;}
+}

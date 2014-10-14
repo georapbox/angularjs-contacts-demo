@@ -1,0 +1,11 @@
+<div class="fadeIn" ng-if="on">
+	<div class="overlay"></div>
+
+	<div class="msgModal" id="deleteModal">
+		<p>Are you sure you want to delete contact?</p>
+		<p>
+			<button class="button yesBtn" ng-click="deleteContact()">Delete</button>
+			<button class="button cancelBtn" ng-click="leaveState()" sref="catalogue" sref-delay="400" change-state>Cancel</button>
+		</p>
+	</div>
+</div>	

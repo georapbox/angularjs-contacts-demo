@@ -1,0 +1,32 @@
+<div class="container slideInLeft" id="addContactContainer" ng-if="on">
+	<div class="row" id="addContact">
+		<div class="twlvecol last">
+			<h2>Add Contact</h2>
+
+			<form name="addContactForm" ng-submit="addContact(contact)">
+				<dl>
+					<dd><input type="text" name="name" placeholder="Full Name" ng-model="contact.name" required></dd>
+				</dl>
+				<dl>
+					<dd><input type="text" name="phoneNo" placeholder="Phone Number" ng-model="contact.phoneNo"></dd>
+				</dl>
+				<dl>
+					<dd><input type="text" name="mobileNo" placeholder="Mobile Number" ng-model="contact.mobileNo"></dd>
+				</dl>
+				<dl>
+					<dd><input type="email" name="email" placeholder="E-mail Address" ng-model="contact.email"></dd>
+				</dl>
+				<dl>
+					<dd><input type="submit" value="Save"></dd>
+				</dl>
+				<div class="clear"></div>
+			</form>
+
+			<a id="closeAddContact" ng-click="leaveState()" sref="catalogue" sref-delay="600" change-state>&#xf00d;</a>	
+		</div>	
+	</div>
+</div>
+
+<div id="addContactMsg">
+	<p>{{message}}</p>
+</div>
